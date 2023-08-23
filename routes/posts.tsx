@@ -1,7 +1,7 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { getServiceInstance, toPage } from "@/tools/utils.ts";
-import { State } from "@/session/session.middleware.ts";
-import { PostsService } from "@/posts/posts.service.ts";
+import { getServiceInstance, toPage } from "@/modules/tools/utils.ts";
+import { State } from "@/modules/session/session.middleware.ts";
+import { PostsService } from "@/modules/posts/posts.service.ts";
 import Posts from "@/components/Posts.tsx";
 
 export default async function PostPage(

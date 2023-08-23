@@ -5,7 +5,7 @@ import { Post } from "./posts.schema.ts";
 import { format } from "timeago";
 import { Marked } from "markdown";
 import { CommentsService } from "../comments/comments.service.ts";
-import { getServiceInstance } from "@/tools/utils.ts";
+import { getServiceInstance } from "@/modules/tools/utils.ts";
 
 interface PopulateOptions {
   isWithUserInfo?: boolean;

@@ -1,14 +1,10 @@
-import Signin from "@/islands/SigninForm.tsx";
-import {
-  HandlerContext,
-  Handlers,
-  MiddlewareHandlerContext,
-} from "$fresh/server.ts";
-import { SigninDto } from "@/user/user.dto.ts";
-import { toBack, toHome, validateParams } from "@/tools/utils.ts";
-import { logger } from "@/tools/log.ts";
-import { UserService } from "@/user/user.service.ts";
-import { flash, State } from "@/session/session.middleware.ts";
+import Signin from "@/components/SigninForm.tsx";
+import { HandlerContext, Handlers } from "$fresh/server.ts";
+import { SigninDto } from "@/modules/user/user.dto.ts";
+import { toBack, toHome, validateParams } from "@/modules/tools/utils.ts";
+import { logger } from "@/modules/tools/log.ts";
+import { UserService } from "@/modules/user/user.service.ts";
+import { flash, State } from "@/modules/session/session.middleware.ts";
 import { assert } from "$std/assert/mod.ts";
 
 export const handler: Handlers = {

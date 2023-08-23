@@ -1,4 +1,4 @@
-import type { User } from "@/user/user.schema.ts";
+import type { User } from "@/modules/user/user.schema.ts";
 
 interface NavSettingProps {
   user?: User;

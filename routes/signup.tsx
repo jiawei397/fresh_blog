@@ -1,12 +1,12 @@
-import Signup from "@/islands/SignupForm.tsx";
+import Signup from "@/components/SignupForm.tsx";
 import { Handlers } from "$fresh/server.ts";
-import { toBack, toHome, validateParams } from "../tools/utils.ts";
-import { CreateUserDto } from "../user/user.dto.ts";
-import { logger } from "../tools/log.ts";
-import { UserService } from "../user/user.service.ts";
-import { Gender } from "../user/user.schema.ts";
+import { toBack, toHome, validateParams } from "@/modules/tools/utils.ts";
+import { CreateUserDto } from "@/modules/user/user.dto.ts";
+import { logger } from "@/modules/tools/log.ts";
+import { UserService } from "@/modules/user/user.service.ts";
+import { Gender } from "@/modules/user/user.schema.ts";
 import { nanoid } from "nanoid";
-import { flash } from "@/session/session.middleware.ts";
+import { flash } from "@/modules/session/session.middleware.ts";
 
 export const handler: Handlers = {
   async POST(req, ctx) {

@@ -1,6 +1,6 @@
 import { NavSetting } from "@/islands/NavSetting.tsx";
 import Nav from "./Nav.tsx";
-import type { User } from "@/user/user.schema.ts";
+import type { User } from "@/modules/user/user.schema.ts";
 
 interface Props {
   title: string;
