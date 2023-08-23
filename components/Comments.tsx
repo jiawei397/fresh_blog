@@ -4,7 +4,6 @@ import type { User } from "@/modules/user/user.schema.ts";
 interface ContentsProps {
   post: Post;
   user?: User;
-  comments?: Comment[];
 }
 
 const renderComments = ({ post, user }: ContentsProps) => {
@@ -28,11 +27,11 @@ const renderComments = ({ post, user }: ContentsProps) => {
     return (
       <div class="comment">
         <span class="avatar">
-          <img src={`/img/${author?.avatar}`} />
+          <img src={`/img/${author.avatar}`} />
         </span>
         <div class="content">
-          <a class="author" href={`/posts?userId=${author?.id}`}>
-            {author?.name}
+          <a class="author" href={`/posts?userId=${author.id}`}>
+            {author.name}
           </a>
           <div class="metadata">
             <span class="date">{createdAt}</span>

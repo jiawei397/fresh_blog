@@ -33,8 +33,8 @@ export class Post extends BaseSchema {
   createdAt?: string;
   contentHtml?: string;
 
-  author?: UserInfo | null;
-  comments?: Comment[] | null;
+  author?: UserInfo;
+  comments?: Required<Comment>[];
   commentsCount?: number;
 }
 

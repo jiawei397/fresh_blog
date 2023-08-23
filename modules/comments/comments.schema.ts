@@ -25,7 +25,7 @@ export class Comment extends BaseSchema {
   createdAt?: string;
   contentHtml?: string;
 
-  author?: UserInfo | null;
+  author?: UserInfo;
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);
