@@ -37,7 +37,7 @@ export const handler: Handlers<unknown, State> = {
       });
       const userId = user.id;
       flash(ctx, "success", "发表成功");
-      logger.info(`用户【${userId}】发表文章成功: ${title}`);
+      logger.info(`用户【${userId}】发表文章成功: ${id}, ${title}`);
       return toPage(req, `/posts/${id}`);
     } catch (error) {
       logger.error(`用户【${user.id}】发表文章失败: ${title}, error: ${error}`);
