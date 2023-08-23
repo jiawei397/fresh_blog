@@ -96,7 +96,7 @@ export function toPage(req: Request, page: `/${string}`, status?: number) {
 }
 
 export function toLogin(req: Request) {
-  return toPage(req, "/login");
+  return toPage(req, "/signin");
 }
 
 export function toBack(req: Request) {
