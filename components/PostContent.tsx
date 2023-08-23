@@ -35,7 +35,10 @@ const PostContent = ({ post, user }: PostContentProps) => {
             <h3>
               <a href={`/posts/${post.id}`}>{title}</a>
             </h3>
-            <pre>{contentHtml}</pre>
+
+            <pre
+              dangerouslySetInnerHTML={{ __html: contentHtml || "" }}
+            ></pre>
             <div>
               <span class="tag">{createdAt}</span>
               <span class="tag right">
