@@ -1,5 +1,5 @@
-import type { Post } from "@/posts/posts.schema.ts";
-import type { User } from "@/user/user.schema.ts";
+import type { Post } from "@/modules/posts/posts.schema.ts";
+import type { User } from "@/modules/user/user.schema.ts";
 
 interface ContentsProps {
   post: Post;

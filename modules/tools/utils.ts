@@ -95,6 +95,10 @@ export function toPage(req: Request, page: `/${string}`, status?: number) {
   return Response.redirect(getRedirectPath(req.url, page), status);
 }
 
+export function toLogin(req: Request) {
+  return toPage(req, "/login");
+}
+
 export function toBack(req: Request) {
   const referer = req.headers.get("Referer");
   if (referer) {
@@ -102,4 +106,9 @@ export function toBack(req: Request) {
   } else {
     return toHome(req);
   }
+}
+
+export function isMongoId(id: unknown) {
+  const mongoIdReg = /^[a-fA-F0-9]{24}$/; // 校验是否mongoId
+  return typeof id === "string" && mongoIdReg.test(id);
 }

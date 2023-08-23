@@ -1,16 +1,16 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { getServiceInstance, toPage } from "@/modules/tools/utils.ts";
+import { getServiceInstance, toLogin, toPage } from "@/modules/tools/utils.ts";
 import { State } from "@/modules/session/session.middleware.ts";
 import { PostsService } from "@/modules/posts/posts.service.ts";
 import Posts from "@/components/Posts.tsx";
 
-export default async function PostPage(
+export default async function PostsPage(
   req: Request,
   ctx: MiddlewareHandlerContext<State>,
 ) {
   const session = ctx.state.session;
   if (!session?.user) {
-    return toPage(req, "/signin");
+    return toLogin(req);
   }
   const postsService = await getServiceInstance(PostsService);
   const url = new URL(req.url);
