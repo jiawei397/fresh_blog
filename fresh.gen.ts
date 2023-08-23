@@ -9,11 +9,12 @@ import * as $3 from "./routes/index.tsx";
 import * as $4 from "./routes/posts.tsx";
 import * as $5 from "./routes/posts/[id].tsx";
 import * as $6 from "./routes/posts/[id]/comment.tsx";
-import * as $7 from "./routes/posts/[id]/edit.tsx";
-import * as $8 from "./routes/posts/[id]/remove.tsx";
-import * as $9 from "./routes/posts/create.tsx";
-import * as $10 from "./routes/signin.tsx";
-import * as $11 from "./routes/signup.tsx";
+import * as $7 from "./routes/posts/[id]/comment/[commentId].tsx";
+import * as $8 from "./routes/posts/[id]/edit.tsx";
+import * as $9 from "./routes/posts/[id]/remove.tsx";
+import * as $10 from "./routes/posts/create.tsx";
+import * as $11 from "./routes/signin.tsx";
+import * as $12 from "./routes/signup.tsx";
 import * as $$0 from "./islands/NavSetting.tsx";
 
 const manifest = {
@@ -25,11 +26,12 @@ const manifest = {
     "./routes/posts.tsx": $4,
     "./routes/posts/[id].tsx": $5,
     "./routes/posts/[id]/comment.tsx": $6,
-    "./routes/posts/[id]/edit.tsx": $7,
-    "./routes/posts/[id]/remove.tsx": $8,
-    "./routes/posts/create.tsx": $9,
-    "./routes/signin.tsx": $10,
-    "./routes/signup.tsx": $11,
+    "./routes/posts/[id]/comment/[commentId].tsx": $7,
+    "./routes/posts/[id]/edit.tsx": $8,
+    "./routes/posts/[id]/remove.tsx": $9,
+    "./routes/posts/create.tsx": $10,
+    "./routes/signin.tsx": $11,
+    "./routes/signup.tsx": $12,
   },
   islands: {
     "./islands/NavSetting.tsx": $$0,
