@@ -29,11 +29,26 @@ export const handler: Handlers<unknown, State> = {
     const title = form.get("title") as string;
     const content = form.get("content") as string;
     const postsService = await getServiceInstance(PostsService);
+    const id = ctx.params.id;
+    const post = await postsService.findById(id, {
+      isWithUserInfo: false,
+    });
+    if (!post) {
+      const error = `文章不存在`;
+      flash(ctx, "error", error);
+      return toBack(req);
+    }
+    if (post.userId !== user.id) {
+      logger.error(`用户【${user.id}】无权限更新文章：${id}`);
+      const error = `无权限更新文章`;
+      return new Response(error, {
+        status: 403,
+      });
+    }
     try {
-      const id = await postsService.save({
+      await postsService.update(id, {
         title,
         content,
-        userId: user.id!,
       });
       const userId = user.id;
       flash(ctx, "success", "更新成功");
