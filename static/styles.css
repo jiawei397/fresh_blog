@@ -1,126 +1,78 @@
+/* ---------- 全局样式 ---------- */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-* {
-  margin: 0;
-}
-button {
-  color: inherit;
-}
-button, [role="button"] {
-  cursor: pointer;
-}
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  font-size: 1em;
-}
-img,
-svg {
-  display: block;
-}
-img,
-video {
-  max-width: 100%;
-  height: auto;
+body {
+  width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
 }
 
-html {
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+a:hover {
+  border-bottom: 3px solid #4fc08d;
 }
-.transition-colors {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+
+.button {
+  background-color: #4fc08d !important;
+  color: #fff !important;
 }
-.my-6 {
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
+
+.avatar {
+  border-radius: 3px;
+  width: 48px;
+  height: 48px;
+  float: right;
 }
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+
+/* ---------- nav ---------- */
+
+.nav {
+  margin-bottom: 20px;
+  color: #999;
+  text-align: center;
 }
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+
+.nav h1 {
+  color: #4fc08d;
+  display: inline-block;
+  margin: 10px 0;
 }
-.my-4 {
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+
+/* ---------- nav-setting ---------- */
+
+.nav-setting {
+  position: fixed;
+  right: 30px;
+  top: 35px;
+  z-index: 999;
 }
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+
+.nav-setting .ui.dropdown.button {
+  padding: 10px 10px 0 10px;
+  background-color: #fff !important;
 }
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+.nav-setting .icon.bars {
+  color: #000;
+  font-size: 18px;
 }
-.py-8 {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+
+/* ---------- post-content ---------- */
+
+.post-content h3 a {
+  color: #4fc08d !important;
 }
-.bg-\[\#86efac\] {
-  background-color: #86efac;
+
+.post-content .tag {
+  font-size: 13px;
+  margin-right: 5px;
+  color: #999;
 }
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+
+.post-content .tag.right {
+  float: right;
+  margin-right: 0;
 }
-.py-6 {
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
-}
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-.py-1 {
-  padding-bottom: 0.25rem;
-  padding-top: 0.25rem;
-}
-.border-gray-500 {
-  border-color: #6b7280;
-}
-.bg-white {
-  background-color: #fff;
-}
-.flex {
-  display: flex;
-}
-.gap-8 {
-  grid-gap: 2rem;
-  gap: 2rem;
-}
-.font-bold {
-  font-weight: 700;
-}
-.max-w-screen-md {
-  max-width: 768px;
-}
-.flex-col {
-  flex-direction: column;
-}
-.items-center {
-  align-items: center;
-}
-.justify-center {
-  justify-content: center;
-}
-.border-2 {
-  border-width: 2px;
-}
-.rounded {
-  border-radius: 0.25rem;
-}
-.hover:bg-gray-200:hover {
-  background-color: #e5e7eb;
+
+.post-content .tag.right a {
+  color: #999;
 }

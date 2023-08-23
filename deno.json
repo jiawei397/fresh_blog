@@ -2,7 +2,7 @@
   "lock": false,
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "start": "deno run -A --check --watch=static/,routes/ dev.ts",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update ."
@@ -24,16 +24,28 @@
     ]
   },
   "imports": {
+    "@/": "./",
     "$fresh/": "https://deno.land/x/fresh@1.4.2/",
     "preact": "https://esm.sh/preact@10.15.1",
     "preact/": "https://esm.sh/preact@10.15.1/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
-    "$std/": "https://deno.land/std@0.193.0/"
+    "twind": "https://esm.sh/twind@0.16.19",
+    "twind/": "https://esm.sh/twind@0.16.19/",
+    "$std/": "https://deno.land/std@0.199.0/",
+    "nanoid": "https://deno.land/x/nanoid@v3.0.0/mod.ts",
+    "deno_class_validator": "https://deno.land/x/deno_class_validator@v1.0.0/mod.ts",
+    "date_file_log": "https://deno.land/x/date_file_log@v0.2.6/mod.ts",
+    "yaml_loader": "https://deno.land/x/yaml_loader@v0.1.0/mod.ts",
+    "deno_mongo_schema": "https://deno.land/x/deno_mongo_schema@v0.10.5/mod.ts",
+    "timeago": "https://esm.sh/timeago.js@4.0.2",
+    "markdown": "https://esm.sh/@ts-stack/markdown@1.4.0"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
   }
 }

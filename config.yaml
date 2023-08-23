@@ -1,0 +1,18 @@
+port: 3000
+meta:
+  title: Deno Blog
+  description: Deno Blog is a simple blog written in Deno.
+# db: "mongodb://localhost:27017/blog"  
+db: "mongodb://10.100.30.65:27018/blog"  
+log:
+  appenders:
+    dateFile:
+      filename: logs/deno
+      daysToKeep: 10
+      pattern: yyyy-MM-dd.log
+  categories:
+    default:
+      appenders:
+        - dateFile
+        - console
+      level: DEBUG

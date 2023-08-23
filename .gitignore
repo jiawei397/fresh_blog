@@ -7,3 +7,5 @@
 
 # Fresh build directory
 _fresh/
+logs
+static/img/
