@@ -1,6 +1,6 @@
 import Signup from "@/islands/SignupForm.tsx";
 import { Handlers } from "$fresh/server.ts";
-import { toBack, validateParams } from "../tools/utils.ts";
+import { toBack, toHome, validateParams } from "../tools/utils.ts";
 import { CreateUserDto } from "../user/user.dto.ts";
 import { logger } from "../tools/log.ts";
 import { UserService } from "../user/user.service.ts";
@@ -24,9 +24,9 @@ export const handler: Handlers = {
       });
     }
     if (form.get("password") !== form.get("repassword")) {
-      return new Response("两次输入密码不一致", {
-        status: 400,
-      });
+      const error = "两次输入密码不一致";
+      flash(ctx, "error", error);
+      return toBack(req);
     }
     logger.debug("注册参数校验成功");
     // 写入上传的avatar到static/img目录
@@ -51,17 +51,20 @@ export const handler: Handlers = {
       });
       logger.info(`用户【${id}】注册成功`);
     } catch (error) {
+      let msg = error.message;
       if (error.message.includes("E11000 duplicate key")) {
-        const error = "用户名已存在";
-        flash(ctx, "error", error);
-        return toBack(req);
+        logger.warn(`用户名已存在: ${form.get("name")}`);
+        msg = "用户名已存在";
+      } else {
+        logger.error(`用户注册失败：${error}`);
       }
-      logger.error(`用户注册失败：${error}`);
-      flash(ctx, "error", error);
+      flash(ctx, "error", msg);
       return toBack(req);
     }
 
-    return new Response(JSON.stringify({ id }));
+    flash(ctx, "success", "注册成功");
+    flash(ctx, "userId", id);
+    return toHome(req);
   },
 };
 
