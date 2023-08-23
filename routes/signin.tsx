@@ -1,7 +1,12 @@
 import Signin from "@/components/SigninForm.tsx";
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import { SigninDto } from "@/modules/user/user.dto.ts";
-import { toBack, toHome, validateParams } from "@/modules/tools/utils.ts";
+import {
+  getServiceInstance,
+  toBack,
+  toHome,
+  validateParams,
+} from "@/modules/tools/utils.ts";
 import { logger } from "@/modules/tools/log.ts";
 import { UserService } from "@/modules/user/user.service.ts";
 import { flash, State } from "@/modules/session/session.middleware.ts";
@@ -23,8 +28,7 @@ export const handler: Handlers = {
     logger.debug("登陆参数校验成功");
     const username = form.get("name") as string;
     const password = form.get("password") as string;
-    const userService = new UserService();
-    await userService.init();
+    const userService = await getServiceInstance(UserService);
     const user = await userService.findByName(username);
     let error = "";
     if (!user) {

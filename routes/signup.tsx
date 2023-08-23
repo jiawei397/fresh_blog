@@ -1,6 +1,11 @@
 import Signup from "@/components/SignupForm.tsx";
 import { Handlers } from "$fresh/server.ts";
-import { toBack, toHome, validateParams } from "@/modules/tools/utils.ts";
+import {
+  getServiceInstance,
+  toBack,
+  toHome,
+  validateParams,
+} from "@/modules/tools/utils.ts";
 import { CreateUserDto } from "@/modules/user/user.dto.ts";
 import { logger } from "@/modules/tools/log.ts";
 import { UserService } from "@/modules/user/user.service.ts";
@@ -38,8 +43,7 @@ export const handler: Handlers = {
     logger.debug(`上传图片成功`);
 
     // 将用户信息写入数据库
-    const userService = new UserService();
-    await userService.init();
+    const userService = await getServiceInstance(UserService);
     let id: string;
     try {
       id = await userService.addUser({
