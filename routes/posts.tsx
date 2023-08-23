@@ -13,10 +13,18 @@ export default async function PostPage(
     return toPage(req, "/signin");
   }
   const postsService = await getServiceInstance(PostsService);
-  const posts = await postsService.findAll({
-    isWithUserInfo: true,
-    isWithCommentsCount: true,
-  });
+  const url = new URL(req.url);
+  const searchParams = url.searchParams;
+  const userId = searchParams.get("userId");
+  const posts = userId
+    ? await postsService.findByUserId(userId, {
+      isWithUserInfo: true,
+      isWithCommentsCount: true,
+    })
+    : await postsService.findAll({
+      isWithUserInfo: true,
+      isWithCommentsCount: true,
+    });
   // console.log(posts);
   return <Posts posts={posts} user={session.user} />;
 }
