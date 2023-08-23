@@ -28,7 +28,7 @@ const renderComments = ({ post, user }: ContentsProps) => {
     return (
       <div class="comment">
         <span class="avatar">
-          <img src={`/static/img/${author?.avatar}`} />
+          <img src={`/img/${author?.avatar}`} />
         </span>
         <div class="content">
           <a class="author" href={`/posts?userId=${author?.id}`}>
