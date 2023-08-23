@@ -8,9 +8,10 @@ import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/index.tsx";
 import * as $4 from "./routes/posts.tsx";
 import * as $5 from "./routes/posts/[id].tsx";
-import * as $6 from "./routes/posts/create.tsx";
-import * as $7 from "./routes/signin.tsx";
-import * as $8 from "./routes/signup.tsx";
+import * as $6 from "./routes/posts/[id]/edit.tsx";
+import * as $7 from "./routes/posts/create.tsx";
+import * as $8 from "./routes/signin.tsx";
+import * as $9 from "./routes/signup.tsx";
 import * as $$0 from "./islands/NavSetting.tsx";
 
 const manifest = {
@@ -21,9 +22,10 @@ const manifest = {
     "./routes/index.tsx": $3,
     "./routes/posts.tsx": $4,
     "./routes/posts/[id].tsx": $5,
-    "./routes/posts/create.tsx": $6,
-    "./routes/signin.tsx": $7,
-    "./routes/signup.tsx": $8,
+    "./routes/posts/[id]/edit.tsx": $6,
+    "./routes/posts/create.tsx": $7,
+    "./routes/signin.tsx": $8,
+    "./routes/signup.tsx": $9,
   },
   islands: {
     "./islands/NavSetting.tsx": $$0,
