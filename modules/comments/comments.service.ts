@@ -3,8 +3,9 @@ import { Comment } from "./comments.schema.ts";
 import { format } from "timeago";
 import { Marked } from "markdown";
 import { CreateCommentDto } from "./comments.dto.ts";
+import { BaseService } from "@/modules/tools/utils.ts";
 
-export class CommentsService {
+export class CommentsService extends BaseService {
   model: Model<Comment>;
   async init() {
     this.model = await MongoFactory.getModel(Comment);
@@ -16,6 +17,12 @@ export class CommentsService {
 
   deleteById(id: string) {
     return this.model.findByIdAndDelete(id);
+  }
+
+  deleteByPostId(postId: string) {
+    return this.model.deleteMany({
+      postId,
+    });
   }
 
   async findByPostId(postId: string) {

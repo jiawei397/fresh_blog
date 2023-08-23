@@ -1,7 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { YamlLoader } from "yaml_loader";
 import { validateOrReject, ValidationError } from "deno_class_validator";
-import { re } from "https://deno.land/std@0.193.0/semver/_shared.ts";
 
 const yamlLoader = new YamlLoader();
 
@@ -50,8 +49,13 @@ export async function validateParams(Cls: Constructor, value: object) {
   return msgs;
 }
 
+export abstract class BaseService {
+  async init(): Promise<void> {
+  }
+}
+
 const services = new Map();
-export async function getServiceInstance<T>(
+export async function getServiceInstance<T extends BaseService>(
   Service: Type<T>,
 ): Promise<T> {
   if (services.has(Service)) {
@@ -59,9 +63,8 @@ export async function getServiceInstance<T>(
   }
   const instance = new Service();
   services.set(Service, instance);
-  if ((instance as any).init instanceof Function) {
-    await (instance as any).init();
-  }
+  await instance.init();
+  console.log(`初始化${Service.name}成功`);
   return instance;
 }
 

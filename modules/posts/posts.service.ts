@@ -6,6 +6,7 @@ import { format } from "timeago";
 import { Marked } from "markdown";
 import { CommentsService } from "../comments/comments.service.ts";
 import { getServiceInstance } from "@/modules/tools/utils.ts";
+import { BaseService } from "@/modules/tools/utils.ts";
 
 interface PopulateOptions {
   isWithUserInfo?: boolean;
@@ -14,7 +15,7 @@ interface PopulateOptions {
   isIncrementPv?: boolean;
 }
 
-export class PostsService {
+export class PostsService extends BaseService {
   model: Model<Post>;
   commentsService: CommentsService;
 
@@ -133,7 +134,17 @@ export class PostsService {
     return this.model.findByIdAndUpdate(id, params);
   }
 
-  deleteById(id: string) {
+  /**
+   * 删除文章
+   * TODO：删除文章时，需要删除文章下的所有留言，但这里应该使用事务的
+   */
+  async deleteById(id: string) {
+    try {
+      const num = await this.commentsService.deleteByPostId(id);
+      logger.info(`删除文章时，删除留言成功, postId: ${id}, num: ${num}`);
+    } catch (err) {
+      logger.error(`删除文章时，删除留言失败, postId: ${id}, ${err}`);
+    }
     return this.model.findByIdAndDelete(id);
   }
 }
