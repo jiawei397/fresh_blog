@@ -1,4 +1,4 @@
-import { NavSetting } from "@/islands/NavSetting.tsx";
+import { NavSetting } from "./NavSetting.tsx";
 import Nav from "./Nav.tsx";
 import type { User } from "@/modules/user/user.schema.ts";
 
