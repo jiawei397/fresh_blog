@@ -25,7 +25,7 @@ export class CommentsService extends BaseService {
     });
   }
 
-  async findByPostId(postId: string) {
+  async findByPostId(postId: string): Promise<Required<Comment>[]> {
     const arr = await this.model.findMany({
       postId,
     }, {
@@ -34,11 +34,11 @@ export class CommentsService extends BaseService {
       },
     });
     arr.forEach((comment) => {
-      comment.createdAt = format(comment.createTime, "zh_CN");
+      comment.createdAt = format(comment.createTime!, "zh_CN");
       const html = Marked.parse(comment.content);
       comment.contentHtml = html;
     });
-    return arr;
+    return arr as Required<Comment>[];
   }
 
   findByPostIds(postIds: string[]) {

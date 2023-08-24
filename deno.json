@@ -38,7 +38,7 @@
     "deno_class_validator": "https://deno.land/x/deno_class_validator@v1.0.0/mod.ts",
     "date_file_log": "https://deno.land/x/date_file_log@v0.2.6/mod.ts",
     "yaml_loader": "https://deno.land/x/yaml_loader@v0.1.0/mod.ts",
-    "deno_mongo_schema": "https://deno.land/x/deno_mongo_schema@v0.10.5/mod.ts",
+    "deno_mongo_schema": "https://deno.land/x/deno_mongo_schema@v1.0.3/mod.ts",
     "timeago": "https://esm.sh/timeago.js@4.0.2",
     "markdown": "https://esm.sh/@ts-stack/markdown@1.4.0"
   },

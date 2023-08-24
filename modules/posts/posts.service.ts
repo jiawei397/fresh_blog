@@ -103,12 +103,12 @@ export class PostsService extends BaseService {
   }
 
   private formatPosts(
-    posts: Required<Post>[],
+    posts: Post[],
     options: PopulateOptions = {},
   ) {
     // 增加浏览次数
     if (options.isIncrementPv) {
-      this.incrementPvByIds(posts.map((post) => post.id)).catch(
+      this.incrementPvByIds(posts.map((post) => post.id!)).catch(
         logger.error,
       );
     }
