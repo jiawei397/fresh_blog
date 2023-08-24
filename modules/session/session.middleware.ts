@@ -87,9 +87,7 @@ export async function SessionMiddleware(
   if (success || error || userId !== undefined) {
     await sessionService.update({
       id: sessionId,
-      success,
-      error,
-      userId,
+      ...context.state.notification, // 不能随意传递undefined，否则会覆盖原有的值
     });
     return new Response(res.body, {
       status: res.status,
