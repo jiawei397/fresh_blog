@@ -6,8 +6,8 @@ import {
   toBack,
   toHome,
   validateParams,
-} from "@/modules/tools/utils.ts";
-import { logger } from "@/modules/tools/log.ts";
+} from "@/tools/utils.ts";
+import { logger } from "@/tools/log.ts";
 import { UserService } from "@/modules/user/user.service.ts";
 import { flash, State } from "@/modules/session/session.middleware.ts";
 import { assert } from "$std/assert/mod.ts";

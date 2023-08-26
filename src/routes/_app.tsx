@@ -1,7 +1,7 @@
 import Head from "@/components/Head.tsx";
 import { defineApp } from "$fresh/server.ts";
 import Notification from "@/components/Notification.tsx";
-import globals from "@/modules/globals.ts";
+import globals from "@/globals.ts";
 import { State } from "@/modules/session/session.middleware.ts";
 
 // deno-lint-ignore require-await

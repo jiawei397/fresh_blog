@@ -5,10 +5,10 @@ import {
   toLogin,
   toPage,
   validateParams,
-} from "@/modules/tools/utils.ts";
+} from "@/tools/utils.ts";
 import { flash, State } from "@/modules/session/session.middleware.ts";
 import { PostsService } from "@/modules/posts/posts.service.ts";
-import { logger } from "@/modules/tools/log.ts";
+import { logger } from "@/tools/log.ts";
 import CreatePostForm from "@/components/posts/Create.tsx";
 import { CreatePostDto } from "@/modules/posts/posts.dto.ts";
 

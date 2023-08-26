@@ -1,5 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import { toHome } from "@/modules/tools/utils.ts";
+import { toHome } from "@/tools/utils.ts";
 import { flash, State } from "@/modules/session/session.middleware.ts";
 
 export const handler: Handlers<unknown, State> = {

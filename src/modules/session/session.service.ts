@@ -1,7 +1,7 @@
 import { Session } from "./session.schema.ts";
 import { CreateSession, UpdateSession } from "./session.interface.ts";
 import { Model, MongoFactory } from "deno_mongo_schema";
-import { BaseService } from "@/modules/tools/utils.ts";
+import { BaseService } from "@/tools/utils.ts";
 
 export class SessionService extends BaseService {
   model: Model<Session>;

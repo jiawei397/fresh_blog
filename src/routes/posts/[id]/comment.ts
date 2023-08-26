@@ -5,9 +5,9 @@ import {
   toBack,
   toLogin,
   validateParams,
-} from "@/modules/tools/utils.ts";
+} from "@/tools/utils.ts";
 import { flash, State } from "@/modules/session/session.middleware.ts";
-import { logger } from "@/modules/tools/log.ts";
+import { logger } from "@/tools/log.ts";
 import { CommentsService } from "@/modules/comments/comments.service.ts";
 import { CreateCommentDto } from "@/modules/comments/comments.dto.ts";
 

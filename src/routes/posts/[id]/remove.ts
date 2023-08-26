@@ -5,10 +5,10 @@ import {
   toBack,
   toLogin,
   toPage,
-} from "@/modules/tools/utils.ts";
+} from "@/tools/utils.ts";
 import { flash, State } from "@/modules/session/session.middleware.ts";
 import { PostsService } from "@/modules/posts/posts.service.ts";
-import { logger } from "@/modules/tools/log.ts";
+import { logger } from "@/tools/log.ts";
 
 export const handler: Handlers<unknown, State> = {
   async GET(req, ctx) {

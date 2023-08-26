@@ -1,9 +1,9 @@
 import { HandlerContext, MiddlewareHandlerContext } from "$fresh/server.ts";
-import { logger } from "../tools/log.ts";
+import { logger } from "@/tools/log.ts";
 import { Session, SESSION_KEY } from "./session.schema.ts";
 import { SessionService } from "./session.service.ts";
 import { Cookie, getCookies, setCookie } from "$std/http/cookie.ts";
-import { getServiceInstance } from "@/modules/tools/utils.ts";
+import { getServiceInstance } from "@/tools/utils.ts";
 import { INTERNAL_PREFIX } from "$fresh/runtime.ts";
 
 export interface Notification {

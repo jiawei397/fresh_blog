@@ -1,5 +1,5 @@
 // deno-lint-ignore-file require-await
-import { BaseService } from "@/modules/tools/utils.ts";
+import { BaseService } from "@/tools/utils.ts";
 import { User } from "./user.schema.ts";
 import { Model, MongoFactory } from "deno_mongo_schema";
 

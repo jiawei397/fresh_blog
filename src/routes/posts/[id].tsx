@@ -1,14 +1,10 @@
 import { HandlerContext } from "$fresh/server.ts";
-import {
-  getServiceInstance,
-  isMongoId,
-  toLogin,
-} from "@/modules/tools/utils.ts";
-import { flash, State } from "@/modules/session/session.middleware.ts";
+import { getServiceInstance, isMongoId, toLogin } from "@/tools/utils.ts";
+import { State } from "@/modules/session/session.middleware.ts";
 import { PostsService } from "@/modules/posts/posts.service.ts";
 import Post from "@/components/PostContent.tsx";
 import Comments from "@/components/Comments.tsx";
-import { logger } from "@/modules/tools/log.ts";
+import { logger } from "@/tools/log.ts";
 
 export default async function PostPage(
   req: Request,

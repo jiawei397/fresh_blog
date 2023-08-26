@@ -1,5 +1,5 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { getServiceInstance } from "@/modules/tools/utils.ts";
+import { getServiceInstance } from "@/tools/utils.ts";
 import { State } from "@/modules/session/session.middleware.ts";
 import { PostsService } from "@/modules/posts/posts.service.ts";
 import Posts from "@/components/Posts.tsx";

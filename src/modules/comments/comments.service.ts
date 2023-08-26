@@ -3,7 +3,7 @@ import { Comment } from "./comments.schema.ts";
 import { format } from "timeago";
 import { Marked } from "markdown";
 import { CreateCommentDto } from "./comments.dto.ts";
-import { BaseService } from "@/modules/tools/utils.ts";
+import { BaseService } from "@/tools/utils.ts";
 
 export class CommentsService extends BaseService {
   model: Model<Comment>;
