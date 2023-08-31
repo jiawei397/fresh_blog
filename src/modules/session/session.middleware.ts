@@ -4,7 +4,6 @@ import { Session, SESSION_KEY } from "./session.schema.ts";
 import { SessionService } from "./session.service.ts";
 import { Cookie, getCookies, setCookie } from "$std/http/cookie.ts";
 import { getServiceInstance } from "@/tools/utils.ts";
-import { INTERNAL_PREFIX } from "$fresh/runtime.ts";
 
 export interface Notification {
   success?: string;
@@ -32,8 +31,7 @@ export async function SessionMiddleware(
   req: Request,
   context: MiddlewareHandlerContext<State>,
 ) {
-  const { pathname } = new URL(req.url);
-  if (pathname.startsWith(INTERNAL_PREFIX)) {
+  if (context.destination !== "route") {
     return context.next();
   }
   const currentUserAgent = req.headers.get("user-agent");
