@@ -1,4 +1,6 @@
 {
+  "name": "fresh_blog",
+  "version": "1.2.0",
   "lock": false,
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
