@@ -1,0 +1,19 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        GIT_REVISION: abcd
+    # image: dk.uino.cn/spacex/thingjsx-web:main
+    ports:
+      - "80:8000"  
+    environment:
+      TZ: Asia/Shanghai  
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./img:/app/img
+  
+ 
+  
