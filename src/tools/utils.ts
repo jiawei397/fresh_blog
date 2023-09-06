@@ -115,3 +115,9 @@ export function isMongoId(id: unknown) {
   const mongoIdReg = /^[a-fA-F0-9]{24}$/; // 校验是否mongoId
   return typeof id === "string" && mongoIdReg.test(id);
 }
+
+export function badResponse(msg: string) {
+  return new Response(msg, {
+    status: 400,
+  });
+}

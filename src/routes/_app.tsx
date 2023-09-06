@@ -3,6 +3,7 @@ import { defineApp } from "$fresh/server.ts";
 import Notification from "@/components/Notification.tsx";
 import globals from "@/globals.ts";
 import { State } from "@/modules/session/session.middleware.ts";
+import Modal from "@/islands/Modal.tsx";
 
 // deno-lint-ignore require-await
 export default defineApp<State>(async (_req, ctx) => {
@@ -30,6 +31,7 @@ export default defineApp<State>(async (_req, ctx) => {
       <body>
         <Head title={title} description={description} user={user} />
         <Notification success={success} error={error} />
+        <Modal />
         <ctx.Component />
       </body>
     </html>

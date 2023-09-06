@@ -2,7 +2,7 @@ import { HandlerContext, MiddlewareHandlerContext } from "$fresh/server.ts";
 import { logger } from "@/tools/log.ts";
 import { Session, SESSION_KEY } from "./session.schema.ts";
 import { SessionService } from "./session.service.ts";
-import { Cookie, getCookies, setCookie } from "$std/http/cookie.ts";
+import { getCookies } from "$std/http/cookie.ts";
 import { getServiceInstance } from "@/tools/utils.ts";
 
 export interface Notification {
@@ -43,7 +43,7 @@ export async function SessionMiddleware(
   const sessionService = await getServiceInstance(SessionService);
   // 从request中获取cookies的sessionId
   const cookieMap = getCookies(req.headers);
-  let sessionId = cookieMap[SESSION_KEY];
+  const sessionId = cookieMap[SESSION_KEY];
   let session;
   if (sessionId) {
     session = await sessionService.findById(sessionId, true).catch((_err) =>
@@ -58,38 +58,23 @@ export async function SessionMiddleware(
         );
         session = null;
       }
+      logger.debug(`找到session: ${session?.user?.name}`);
     }
   } else {
     logger.warn(`cookie中没有找到${SESSION_KEY}`);
   }
-  if (!session) {
-    session = await sessionService.save({ userAgent: currentUserAgent });
-    sessionId = session.id!;
-    logger.info(`创建session: ${sessionId}`);
+  if (session) {
+    context.state.session = session;
   }
-  context.state.session = session;
   const res = await context.next();
-
-  const headers = new Headers(res.headers);
-  const cookie: Cookie = {
-    name: SESSION_KEY,
-    value: sessionId,
-    httpOnly: true,
-    secure: false,
-    maxAge: 60 * 60 * 24 * 7,
-    sameSite: "Strict",
-  };
-  setCookie(headers, cookie);
-
   const { success, error, userId } = context.state.notification || {};
+  if (!session) {
+    return res;
+  }
   if (success || error || userId !== undefined) {
     await sessionService.update({
       id: sessionId,
       ...context.state.notification, // 不能随意传递undefined，否则会覆盖原有的值
-    });
-    return new Response(res.body, {
-      status: res.status,
-      headers,
     });
   } else {
     if (session.error || session.success) {
@@ -97,10 +82,6 @@ export async function SessionMiddleware(
         id: sessionId,
         error: "",
         success: "",
-      });
-      return new Response(res.body, {
-        status: res.status,
-        headers,
       });
     }
   }

@@ -1,9 +1,9 @@
-import Signin from "@/components/SigninForm.tsx";
+import Signin from "@/islands/SigninForm.tsx";
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import { SigninDto } from "@/modules/user/user.dto.ts";
 import {
+  badResponse,
   getServiceInstance,
-  toBack,
   toHome,
   validateParams,
 } from "@/tools/utils.ts";
@@ -11,19 +11,20 @@ import { logger } from "@/tools/log.ts";
 import { UserService } from "@/modules/user/user.service.ts";
 import { flash, State } from "@/modules/session/session.middleware.ts";
 import { assert } from "$std/assert/mod.ts";
+import { Cookie, setCookie } from "$std/http/cookie.ts";
+import { SESSION_KEY } from "@/modules/session/session.schema.ts";
+import { SessionService } from "@/modules/session/session.service.ts";
 
 export const handler: Handlers = {
   async POST(req, ctx) {
     const form: FormData = await req.formData();
     const errMsgs = await validateParams(SigninDto, form);
     if (errMsgs.length > 0) {
-      flash(ctx, "error", errMsgs.join("\n"));
-      return toBack(req);
+      return badResponse(errMsgs.join("\n"));
     }
     const userAgent = req.headers.get("user-agent");
     if (!userAgent) {
-      flash(ctx, "error", "user-agent is required");
-      return toBack(req);
+      return badResponse("user-agent is required");
     }
     logger.debug("登陆参数校验成功");
     const username = form.get("name") as string;
@@ -39,15 +40,29 @@ export const handler: Handlers = {
       error = "用户名或密码错误";
     }
     if (error) {
-      flash(ctx, "error", error);
-      return toBack(req);
+      return badResponse(error);
     }
     assert(user);
     const userId = user.id;
-    flash(ctx, "userId", user.id);
-    flash(ctx, "success", "登录成功");
     logger.info(`用户【${userId}】登陆成功`);
-    return toHome(req);
+    // 响应Cookie
+    const sessionService = await getServiceInstance(SessionService);
+    const session = await sessionService.save({ userAgent, userId });
+    const sessionId = session.id!;
+    const headers = new Headers();
+    const cookie: Cookie = {
+      name: SESSION_KEY,
+      value: sessionId,
+      httpOnly: true,
+      secure: false,
+      maxAge: 60 * 60 * 24 * 7,
+      sameSite: "Strict",
+    };
+    setCookie(headers, cookie);
+    headers.set("content-type", "application/json");
+    return new Response(JSON.stringify(user), {
+      headers,
+    });
   },
 };
 
