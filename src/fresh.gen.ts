@@ -5,17 +5,18 @@
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/_middleware.ts";
-import * as $3 from "./routes/index.ts";
-import * as $4 from "./routes/posts.tsx";
-import * as $5 from "./routes/posts/[id].tsx";
-import * as $6 from "./routes/posts/[id]/comment.ts";
-import * as $7 from "./routes/posts/[id]/comment/[commentId].ts";
-import * as $8 from "./routes/posts/[id]/edit.tsx";
-import * as $9 from "./routes/posts/[id]/remove.ts";
-import * as $10 from "./routes/posts/create.tsx";
-import * as $11 from "./routes/signin.tsx";
-import * as $12 from "./routes/signout.ts";
-import * as $13 from "./routes/signup.tsx";
+import * as $3 from "./routes/img.ts";
+import * as $4 from "./routes/index.ts";
+import * as $5 from "./routes/posts.tsx";
+import * as $6 from "./routes/posts/[id].tsx";
+import * as $7 from "./routes/posts/[id]/comment.ts";
+import * as $8 from "./routes/posts/[id]/comment/[commentId].ts";
+import * as $9 from "./routes/posts/[id]/edit.tsx";
+import * as $10 from "./routes/posts/[id]/remove.ts";
+import * as $11 from "./routes/posts/create.tsx";
+import * as $12 from "./routes/signin.tsx";
+import * as $13 from "./routes/signout.ts";
+import * as $14 from "./routes/signup.tsx";
 import * as $$0 from "./islands/Modal.tsx";
 import * as $$1 from "./islands/SigninForm.tsx";
 
@@ -24,17 +25,18 @@ const manifest = {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
     "./routes/_middleware.ts": $2,
-    "./routes/index.ts": $3,
-    "./routes/posts.tsx": $4,
-    "./routes/posts/[id].tsx": $5,
-    "./routes/posts/[id]/comment.ts": $6,
-    "./routes/posts/[id]/comment/[commentId].ts": $7,
-    "./routes/posts/[id]/edit.tsx": $8,
-    "./routes/posts/[id]/remove.ts": $9,
-    "./routes/posts/create.tsx": $10,
-    "./routes/signin.tsx": $11,
-    "./routes/signout.ts": $12,
-    "./routes/signup.tsx": $13,
+    "./routes/img.ts": $3,
+    "./routes/index.ts": $4,
+    "./routes/posts.tsx": $5,
+    "./routes/posts/[id].tsx": $6,
+    "./routes/posts/[id]/comment.ts": $7,
+    "./routes/posts/[id]/comment/[commentId].ts": $8,
+    "./routes/posts/[id]/edit.tsx": $9,
+    "./routes/posts/[id]/remove.ts": $10,
+    "./routes/posts/create.tsx": $11,
+    "./routes/signin.tsx": $12,
+    "./routes/signout.ts": $13,
+    "./routes/signup.tsx": $14,
   },
   islands: {
     "./islands/Modal.tsx": $$0,

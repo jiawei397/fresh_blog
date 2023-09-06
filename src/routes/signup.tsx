@@ -38,8 +38,8 @@ export const handler: Handlers = {
     const originFilename = avatar.name;
     const ext = originFilename.split(".").pop();
     const filename = nanoid() + "." + ext; // 为避免用户上传的文件重名，所以不能使用原始名称avatar.name，而是用一个唯一值
-    await Deno.mkdir("static/img").catch((_err) => null);
-    await Deno.writeFile("static/img/" + filename, avatar.stream());
+    await Deno.mkdir("./img").catch((_err) => null);
+    await Deno.writeFile("./img/" + filename, avatar.stream());
     logger.debug(`上传图片成功`);
 
     // 将用户信息写入数据库
