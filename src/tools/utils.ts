@@ -62,8 +62,9 @@ export async function getServiceInstance<T extends BaseService>(
     return services.get(Service);
   }
   const instance = new Service();
-  services.set(Service, instance);
-  await instance.init();
+  const promise = instance.init().then(() => instance);
+  services.set(Service, promise);
+  await promise;
   console.log(`初始化${Service.name}成功`);
   return instance;
 }
