@@ -11,9 +11,6 @@ export default async function PostPage(
   ctx: HandlerContext<unknown, State>,
 ) {
   const session = ctx.state.session;
-  if (!session?.user) {
-    return toLogin(req);
-  }
   const id = ctx.params.id;
   if (!isMongoId(id)) {
     logger.error(`文章id不合法：${id}`);
@@ -38,8 +35,8 @@ export default async function PostPage(
   }
   return (
     <>
-      <Post post={post} user={session.user} />
-      <Comments post={post} user={session.user} />
+      <Post post={post} user={session?.user} />
+      <Comments post={post} user={session?.user} />
     </>
   );
 }
